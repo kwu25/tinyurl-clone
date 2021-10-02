@@ -8,6 +8,7 @@ In the project directory, you can run:
 
 ### `npm run dev`
 
+Must create MySQL database first based on **api/config/config.json** credentials.\
 Starts the server to connect to database. Code for server in **/api** folder.
 
 In the **/client** directory, you can run:
