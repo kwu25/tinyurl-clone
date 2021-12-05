@@ -5,13 +5,29 @@ const RedirectPage = ({ fetchUrl }) => {
   const [notFound, setNotFound] = useState(false);
   const { alias } = useParams();
   useEffect(() => {
+    // const getUrl = async () => {
+    //   try {
+    //     const longUrl = await fetchUrl(alias);
+    //     window.location.href = longUrl;
+    //   } catch {
+    //     setNotFound(true);
+    //   }
+    // };
     const getUrl = async () => {
-      try {
-        const longUrl = await fetchUrl(alias);
-        window.location.href = longUrl;
-      } catch {
-        setNotFound(true);
-      }
+      await fetchUrl(alias)
+        .then((longUrl) => {
+          window.location.href = longUrl;
+        })
+        .catch(() => {
+          setNotFound(true);
+        });
+
+      // try {
+      //   const longUrl = await fetchUrl(alias);
+      //   window.location.href = longUrl;
+      // } catch {
+      //   setNotFound(true);
+      // }
     };
 
     getUrl();
